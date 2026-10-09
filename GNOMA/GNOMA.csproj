@@ -12,4 +12,13 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.24.2-preview.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Application\Interfaces\" />
+    <Folder Include="Application\DTOs\" />
+    <Folder Include="Domain\Entities\" />
+    <Folder Include="Domain\Exceptions\" />
+    <Folder Include="Infrastructure\Supabase\SupabaseClientFactory\" />
+    <Folder Include="Infrastructure\Supabase\Repositories\" />
+  </ItemGroup>
+
 </Project>

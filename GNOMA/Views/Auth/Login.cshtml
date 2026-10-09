@@ -1,0 +1,164 @@
+﻿
+@model GNOMA.Models.Auth.AuthRequest
+
+@{
+    ViewData["Title"] = "Sign In";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <title>Sign In - GNOMA</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+          rel="stylesheet" />
+
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+          rel="stylesheet" />
+
+    <link rel="stylesheet" href="~/css/auth/login.css" asp-append-version="true" />
+</head>
+<body class="gnoma-login">
+
+    <main class="login-layout">
+
+        <section class="login-panel">
+
+            <a class="login-logo" asp-controller="Home" asp-action="Index">
+                GNOMA<span>.</span>
+            </a>
+
+            <div class="login-content">
+
+                <div class="login-heading">
+                    <span class="login-eyebrow">YOUR JOURNEY CONTINUES</span>
+                    <h1>Welcome<br>back<span>.</span></h1>
+                    <p>Sign in to continue building a stronger you.</p>
+                </div>
+
+                <form asp-action="Login"
+                      method="post"
+                      class="login-form">
+
+                    @Html.AntiForgeryToken()
+
+                    <div asp-validation-summary="ModelOnly"
+                         class="login-validation-summary"
+                         role="alert"></div>
+
+                    <div class="login-field">
+                        <label asp-for="Email">Email address</label>
+
+                        <div class="login-input-wrap">
+                            <i class="bx bx-envelope"></i>
+                            <input asp-for="Email"
+                                   type="email"
+                                   placeholder="you@example.com"
+                                   autocomplete="username"
+                                   autocapitalize="none"
+                                   spellcheck="false"
+                                   required />
+                        </div>
+
+                        <span asp-validation-for="Email"
+                              class="login-field-error"></span>
+                    </div>
+
+                    <div class="login-field">
+                        <div class="login-label-row">
+                            <label asp-for="Password">Password</label>
+                            <a asp-controller="Auth"
+                               asp-action="ForgotPassword"
+                               class="login-forgot-link">Forgot password?</a>
+                        </div>
+
+                        <div class="login-input-wrap">
+                            <i class="bx bx-lock-alt"></i>
+                            <input asp-for="Password"
+                                   type="password"
+                                   id="loginPassword"
+                                   placeholder="Enter your password"
+                                   autocomplete="current-password"
+                                   required />
+
+                            <button type="button"
+                                    class="password-toggle"
+                                    id="togglePassword"
+                                    aria-label="Show password"
+                                    aria-pressed="false">
+                                <i class="bx bx-show"></i>
+                            </button>
+                        </div>
+
+                        <span asp-validation-for="Password"
+                              class="login-field-error"></span>
+                    </div>
+
+                    <button type="submit" class="login-submit">
+                        <span>Sign in</span>
+                        <i class="bx bx-right-arrow-alt"></i>
+                    </button>
+
+                    <div class="login-divider">
+                        <span></span>
+                        <p>YOUR NEXT CHAPTER STARTS HERE</p>
+                        <span></span>
+                    </div>
+
+                    <p class="login-register">
+                        New to GNOMA?
+                        <a asp-controller="Auth" asp-action="Register">Create an account</a>
+                    </p>
+
+                </form>
+
+            </div>
+
+            <footer class="login-footer">
+                <span>© 2026 GNOMA</span>
+                <a asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </footer>
+
+        </section>
+
+        <aside class="login-visual">
+
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=85"
+                 alt="GNOMA training space"
+                 class="login-background-image" />
+
+            <div class="login-visual-overlay"></div>
+
+            <div class="login-visual-top">
+                <span>GNOMA TRAINING CLUB</span>
+                <span>EST. FOR PROGRESS</span>
+            </div>
+
+            <div class="login-visual-content">
+                <span class="login-visual-index">01 / YOUR MINDSET</span>
+                <h2>DISCIPLINE<br>BUILDS<br><span>FREEDOM.</span></h2>
+                <p>Every session is a promise you make to yourself. Keep showing up.</p>
+            </div>
+
+            <div class="login-visual-bottom">
+                <span><i class="bx bx-dumbbell"></i> TRAIN WITH PURPOSE</span>
+                <span><i class="bx bx-target-lock"></i> MOVE WITH INTENTION</span>
+            </div>
+
+        </aside>
+
+    </main>
+
+    <script src="~/js/auith/login.js" asp-append-version="true"></script>
+    <partial name="_ValidationScriptsPartial" />
+
+</body>
+</html>

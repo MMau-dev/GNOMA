@@ -1,10 +1,11 @@
+using GNOMA.Controllers.Base;
 using GNOMA.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace GNOMA.Controllers
+namespace GNOMA.Controllers.MainFrame
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public IActionResult Index()
         {

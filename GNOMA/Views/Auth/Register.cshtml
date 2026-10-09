@@ -1,0 +1,119 @@
+﻿@model GNOMA.Models.Auth.AuthRequest
+
+@{
+    ViewData["Title"] = "Create Account";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - GNOMA</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/auth/register.css" asp-append-version="true" />
+</head>
+<body class="auth-page">
+    <main class="auth-shell">
+        <section class="auth-panel">
+            <a class="auth-brand" asp-controller="Home" asp-action="Index" aria-label="GNOMA Home">
+                GNOMA<span>.</span>
+            </a>
+
+            <div class="auth-content">
+                <div class="auth-heading">
+                    <span class="auth-eyebrow">START YOUR JOURNEY</span>
+                    <h1>Create your<br />account<span>.</span></h1>
+                    <p>Build better habits. Get stronger every day.</p>
+                </div>
+
+                <form asp-action="Register" method="post" class="auth-form">
+                    @Html.AntiForgeryToken()
+
+                    <div asp-validation-summary="ModelOnly" class="auth-validation-summary"></div>
+
+                    <div class="auth-field">
+                        <label asp-for="Email">Email address</label>
+                        <div class="auth-input-wrap">
+                            <i class="bx bx-envelope" aria-hidden="true"></i>
+                            <input asp-for="Email"
+                                   type="email"
+                                   autocomplete="email"
+                                   placeholder="you@example.com"
+                                   required />
+                        </div>
+                        <span asp-validation-for="Email" class="auth-validation"></span>
+                    </div>
+
+                    <div class="auth-field">
+                        <label asp-for="Password">Password</label>
+                        <div class="auth-input-wrap">
+                            <i class="bx bx-lock-alt" aria-hidden="true"></i>
+                            <input asp-for="Password"
+                                   type="password"
+                                   id="registerPassword"
+                                   autocomplete="new-password"
+                                   placeholder="Create a password"
+                                   required />
+                            <button class="auth-password-toggle"
+                                    type="button"
+                                    data-password-toggle="registerPassword"
+                                    aria-label="Show password"
+                                    aria-pressed="false">
+                                <i class="bx bx-show" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <span asp-validation-for="Password" class="auth-validation"></span>
+                    </div>
+
+                    <button type="submit" class="auth-submit">
+                        <span>Create account</span>
+                        <i class="bx bx-right-arrow-alt" aria-hidden="true"></i>
+                    </button>
+
+                    <p class="auth-switch">
+                        Already have an account?
+                        <a asp-action="Login">Sign in</a>
+                    </p>
+                </form>
+            </div>
+
+            <footer class="auth-footer">
+                <span>© @DateTime.Now.Year GNOMA</span>
+                <a asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </footer>
+        </section>
+
+        <aside class="auth-visual auth-visual-register">
+            <div class="auth-visual-image"></div>
+            <div class="auth-visual-overlay"></div>
+
+            <div class="auth-visual-top">
+                <span class="auth-visual-label">YOUR NEXT CHAPTER</span>
+                <span class="auth-visual-index">01 — 03</span>
+            </div>
+
+            <div class="auth-visual-content">
+                <span class="auth-visual-line"></span>
+                <h2>Progress<br />starts with<br /><span>one decision.</span></h2>
+                <p>Show up for yourself. The rest follows.</p>
+            </div>
+
+            <div class="auth-visual-bottom">
+                <span>STRENGTH IS BUILT DAILY</span>
+                <i class="bx bx-arrow-up-right" aria-hidden="true"></i>
+            </div>
+        </aside>
+    </main>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/auth/login.js" asp-append-version="true"></script>
+    <partial name="_ValidationScriptsPartial" />
+</body>
+</html>
+

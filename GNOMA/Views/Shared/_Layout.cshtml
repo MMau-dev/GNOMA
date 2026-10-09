@@ -1,50 +1,215 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffffff" />
+
     <title>@ViewData["Title"] - GNOMA</title>
+
     <script type="importmap"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+          rel="stylesheet" />
+
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+          rel="stylesheet" />
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/GNOMA.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/dashboard/dashboard.css" asp-append-version="true" />
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GNOMA</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+<body class="gnoma-dashboard">
+
+    <div class="dashboard-shell">
+
+        <aside class="sidebar" id="dashboardSidebar">
+
+            <a class="sidebar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                GNOMA<span>.</span>
+            </a>
+
+            <div class="sidebar-label">WORKSPACE</div>
+
+            <nav class="sidebar-navigation" aria-label="Main navigation">
+
+                <a class="sidebar-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" ? "active" : "")"
+                   asp-area=""
+                   asp-controller="Home"
+                   asp-action="Index">
+                    <i class="bx bx-grid-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                <a class="sidebar-link"
+                   asp-area=""
+                   asp-controller="Home"
+                   asp-action="Index">
+                    <i class="bx bx-dumbbell"></i>
+                    <span>Training</span>
+                </a>
+
+                <a class="sidebar-link"
+                   asp-area=""
+                   asp-controller="Home"
+                   asp-action="Index">
+                    <i class="bx bx-calendar"></i>
+                    <span>Schedule</span>
+                </a>
+
+                <a class="sidebar-link"
+                   asp-area=""
+                   asp-controller="Home"
+                   asp-action="Index">
+                    <i class="bx bx-bar-chart-alt-2"></i>
+                    <span>Progress</span>
+                </a>
+
+                <a class="sidebar-link"
+                   asp-area=""
+                   asp-controller="Home"
+                   asp-action="Index">
+                    <i class="bx bx-trophy"></i>
+                    <span>Achievements</span>
+                </a>
+
+                <div class="sidebar-label sidebar-label-spaced">PERSONAL</div>
+
+                <a class="sidebar-link"
+                   asp-area=""
+                   asp-controller="Home"
+                   asp-action="Index">
+                    <i class="bx bx-user"></i>
+                    <span>My Profile</span>
+                </a>
+
+                <a class="sidebar-link"
+                   asp-area=""
+                   asp-controller="Home"
+                   asp-action="Privacy">
+                    <i class="bx bx-cog"></i>
+                    <span>Settings</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <div class="sidebar-support">
+                    <div class="support-icon">
+                        <i class="bx bx-help-circle"></i>
+                    </div>
+                    <div>
+                        <strong>Need help?</strong>
+                        <span>We are here for you.</span>
+                    </div>
+                    <i class="bx bx-chevron-right support-arrow"></i>
                 </div>
+
+                <div class="sidebar-user">
+                    <div class="user-avatar">GN</div>
+
+                    <div class="user-details">
+                        <strong>GNOMA Member</strong>
+                        <span>Standard Account</span>
+                    </div>
+
+                    <button class="icon-button user-menu-button"
+                            type="button"
+                            aria-label="Account options">
+                        <i class="bx bx-dots-vertical-rounded"></i>
+                    </button>
+                </div>
+
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        </aside>
+
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <div class="dashboard-main">
+
+            <header class="topbar">
+
+                <div class="topbar-left">
+                    <button class="icon-button sidebar-toggle"
+                            id="sidebarToggle"
+                            type="button"
+                            aria-label="Open navigation"
+                            aria-expanded="false"
+                            aria-controls="dashboardSidebar">
+                        <i class="bx bx-menu"></i>
+                    </button>
+
+                    <div class="breadcrumb">
+                        <span>GNOMA</span>
+                        <i class="bx bx-chevron-right"></i>
+                        <strong>@ViewData["Title"]</strong>
+                    </div>
+                </div>
+
+                <div class="topbar-right">
+
+                    <form class="dashboard-search"
+                          asp-area=""
+                          asp-controller="Home"
+                          asp-action="Index"
+                          method="get"
+                          role="search">
+                        <i class="bx bx-search"></i>
+                        <input type="search"
+                               name="search"
+                               placeholder="Search anything..."
+                               aria-label="Search" />
+                        <span class="search-shortcut">/</span>
+                    </form>
+
+                    <button class="icon-button notification-button"
+                            type="button"
+                            aria-label="Notifications">
+                        <i class="bx bx-bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <div class="topbar-divider"></div>
+
+                    <button class="topbar-profile"
+                            type="button"
+                            aria-label="Open profile">
+                        <div class="user-avatar topbar-avatar">GN</div>
+                        <div class="topbar-profile-info">
+                            <strong>GNOMA Member</strong>
+                            <span>Member</span>
+                        </div>
+                        <i class="bx bx-chevron-down"></i>
+                    </button>
+
+                </div>
+            </header>
+
+            <main class="dashboard-content" role="main">
+                @RenderBody()
+            </main>
+
+            <footer class="dashboard-footer">
+                <span>© 2026 GNOMA</span>
+                <span>Built through consistency. Defined by you.</span>
+                <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </footer>
+
+        </div>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - GNOMA - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/dashboard/dashboard.js" asp-append-version="true"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 </html>

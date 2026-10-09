@@ -1,8 +1,236 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    Layout = null;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="GNOMA — A different standard of strength. Discover our training programs, expert coaching, and membership options.">
+
+    <title>GNOMA — Train Beyond Limits</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/mainframe/mainframe.css">
+</head>
+<body>
+
+    <header class="header" id="top">
+        <a href="#top" class="logo">GNOMA<span>.</span></a>
+
+        <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">
+            <i class="bx bx-menu"></i>
+        </button>
+
+        <nav class="navigation">
+            <a href="#about">About</a>
+            <a href="#programs">Programs</a>
+            <a href="#philosophy">Philosophy</a>
+            <a href="#membership">Membership</a>
+        </nav>
+
+        <a href="@Url.Action("Login", "Auth")" class="header-cta">
+            Join GNOMA <i class="bx bx-right-arrow-alt"></i>
+        </a>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <span class="eyebrow" data-aos="fade-up">BUILT ON DISCIPLINE. DRIVEN BY PURPOSE.</span>
+
+                <h1 data-aos="fade-up" data-aos-delay="100">
+                    STRONGER<br>
+                    THAN <span>YESTERDAY.</span>
+                </h1>
+
+                <p class="hero-description" data-aos="fade-up" data-aos-delay="200">
+                    A space to challenge your limits, build your strength, and become the strongest version of yourself.
+                </p>
+
+                <div class="hero-actions" data-aos="fade-up" data-aos-delay="300">
+                    <a href="#membership" class="button button-dark">
+                        Start your journey <i class="bx bx-right-arrow-alt"></i>
+                    </a>
+                    <a href="#programs" class="text-link">
+                        Explore training <i class="bx bx-down-arrow-alt"></i>
+                    </a>
+                </div>
+
+                <div class="hero-meta" data-aos="fade-up" data-aos-delay="400">
+                    <span><i class="bx bx-map"></i> YOUR CITY, YOUR GYM</span>
+                    <span><i class="bx bx-time-five"></i> OPEN EVERY DAY</span>
+                </div>
+            </div>
+
+            <div class="hero-visual" data-aos="fade-left" data-aos-duration="1000">
+                <img
+                    src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1400&q=85"
+                    alt="Modern gym with professional training equipment"
+                >
+                <div class="image-label">
+                    <span>01 / 04</span>
+                    <span>THE GNOMA EXPERIENCE</span>
+                </div>
+                <div class="vertical-label">MINDSET · MOVEMENT · STRENGTH</div>
+            </div>
+
+            <div class="hero-index">01 — PERFORMANCE IS A PRACTICE</div>
+        </section>
+
+        <section class="stats-section" id="about">
+            <div class="stats-intro" data-aos="fade-up">
+                <span class="eyebrow">MORE THAN A WORKOUT</span>
+                <h2>YOUR WORK.<br>YOUR <span>EVOLUTION.</span></h2>
+            </div>
+
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                <strong>01</strong>
+                <span>Purposeful<br>training</span>
+            </div>
+
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                <strong>02</strong>
+                <span>Expert<br>coaching</span>
+            </div>
+
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                <strong>03</strong>
+                <span>A stronger<br>community</span>
+            </div>
+        </section>
+
+        <section class="programs-section section-padding" id="programs">
+            <div class="section-heading" data-aos="fade-up">
+                <div>
+                    <span class="eyebrow">FIND YOUR STRENGTH</span>
+                    <h2>TRAIN WITH<br><span>INTENTION.</span></h2>
+                </div>
+                <p>
+                    Different goals. Different disciplines. One place to move forward.
+                    Find the training that fits your ambition.
+                </p>
+            </div>
+
+            <div class="program-grid">
+                <article class="program-card" data-aos="fade-up">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85" alt="Strength training with free weights" loading="lazy">
+                        <span class="program-number">01</span>
+                    </div>
+                    <div class="program-info">
+                        <div>
+                            <h3>Strength & Conditioning</h3>
+                            <p>Build power. Develop resilience.</p>
+                        </div>
+                        <a href="#membership" aria-label="Explore strength and conditioning">
+                            <i class="bx bx-up-arrow-alt"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="program-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=85" alt="Athlete training in a gym" loading="lazy">
+                        <span class="program-number">02</span>
+                    </div>
+                    <div class="program-info">
+                        <div>
+                            <h3>Personal Training</h3>
+                            <p>Individual goals. Focused results.</p>
+                        </div>
+                        <a href="#membership" aria-label="Explore personal training">
+                            <i class="bx bx-up-arrow-alt"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="program-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?auto=format&fit=crop&w=900&q=85" alt="Athlete performing functional training" loading="lazy">
+                        <span class="program-number">03</span>
+                    </div>
+                    <div class="program-info">
+                        <div>
+                            <h3>Functional Training</h3>
+                            <p>Move better. Perform stronger.</p>
+                        </div>
+                        <a href="#membership" aria-label="Explore functional training">
+                            <i class="bx bx-up-arrow-alt"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="manifesto-section" id="philosophy">
+            <div class="manifesto-image" data-aos="fade-right">
+                <img src="https://images.unsplash.com/photo-1534368270820-9de3d8053204?auto=format&fit=crop&w=1200&q=85" alt="Athlete focused on training" loading="lazy">
+            </div>
+
+            <div class="manifesto-content" data-aos="fade-left">
+                <span class="eyebrow">THE GNOMA PHILOSOPHY</span>
+                <h2>NO SHORTCUTS.<br>NO EXCUSES.<br><span>JUST PROGRESS.</span></h2>
+                <p>
+                    We believe real strength is built one session at a time.
+                    Not through perfection, but through consistency.
+                    Not by competing with others, but by showing up for yourself.
+                </p>
+                <a href="#membership" class="button button-light">
+                    Become a member <i class="bx bx-right-arrow-alt"></i>
+                </a>
+                <span class="manifesto-mark">G.</span>
+            </div>
+        </section>
+
+        <section class="membership-section section-padding" id="membership">
+            <div class="membership-heading" data-aos="fade-up">
+                <span class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</span>
+                <h2>MAKE ROOM<br>FOR <span>GROWTH.</span></h2>
+                <p>
+                    Take the first step. Meet the community. Find out what you are capable of.
+                </p>
+            </div>
+
+            <div class="membership-card" data-aos="zoom-in">
+                <div>
+                    <span class="eyebrow">THE FIRST STEP</span>
+                    <h3>Start with a visit.</h3>
+                    <p>Discover our space, meet our coaches, and find the right training path for you.</p>
+                </div>
+                <a href="mailto:hello@gnoma.com?subject=GNOMA%20Gym%20Visit" class="button button-dark">
+                    Book a visit <i class="bx bx-right-arrow-alt"></i>
+                </a>
+            </div>
+        </section>
+
+        <section class="closing-section" data-aos="fade-up">
+            <span>SHOW UP.</span>
+            <span>PUT IN THE WORK.</span>
+            <span class="closing-outline">BECOME MORE.</span>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="#top" class="logo">GNOMA<span>.</span></a>
+        <p>Built through consistency. Defined by you.</p>
+        <div class="social-links">
+            <a href="#" aria-label="Instagram"><i class="bx bxl-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="#" aria-label="TikTok"><i class="bx bxl-tiktok"></i></a>
+        </div>
+        <span class="copyright">© 2026 GNOMA. ALL RIGHTS RESERVED.</span>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/mainframe/mainframe.js"></script>
+</body>
+</html>

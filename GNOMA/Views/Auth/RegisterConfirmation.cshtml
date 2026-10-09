@@ -1,0 +1,144 @@
+@{
+    ViewData["Title"] = "Email Registered";
+    Layout = null;
+    var registeredEmail = ViewBag.Email as string ?? "tu correo electrónico";
+    var isConfirmed = (bool)(ViewBag.IsConfirmed ?? false);
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - GNOMA</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/auth/register.css" asp-append-version="true" />
+</head>
+<body class="auth-page">
+    <main class="auth-shell">
+        <section class="auth-panel">
+            <a class="auth-brand" asp-controller="Home" asp-action="Index" aria-label="GNOMA Home">
+                GNOMA<span>.</span>
+            </a>
+
+            <div class="auth-content auth-confirmation-content">
+                <div class="auth-heading">
+                    <span class="auth-eyebrow">REGISTRO EXITOSO</span>
+                    @if (isConfirmed)
+                    {
+                        <h1>¡Cuenta<br />creada!<span>.</span></h1>
+                        <p>Tu cuenta ha sido registrada y validada correctamente. Ya puedes acceder al panel.</p>
+                    }
+                    else
+                    {
+                        <h1>Verifica tu<br />correo<span>.</span></h1>
+                        <p>Tu registro se completó con éxito. Para activar tu cuenta, confirma tu correo electrónico.</p>
+                    }
+                </div>
+
+                <div class="auth-confirmation-card">
+                    <div class="auth-status-header">
+                        <div class="auth-status-icon-wrap">
+                            <i class="bx bx-check-circle" aria-hidden="true"></i>
+                        </div>
+                        <div class="auth-status-header-text">
+                            <span class="auth-status-badge">Validación exitosa</span>
+                            <h3>@(isConfirmed ? "Cuenta activa" : "Confirmación enviada")</h3>
+                        </div>
+                    </div>
+
+                    <div class="auth-registered-email" title="Correo registrado">
+                        <i class="bx bx-envelope" aria-hidden="true"></i>
+                        <span>@registeredEmail</span>
+                        <i class="bx bx-check" aria-hidden="true"></i>
+                    </div>
+
+                    @if (!isConfirmed)
+                    {
+                        <div class="auth-instructions">
+                            <p class="auth-instructions-title">Pasos siguientes</p>
+                            <ol class="auth-instructions-list">
+                                <li>Revisa tu bandeja de entrada en el correo indicado.</li>
+                                <li>Abre el mensaje de <strong>GNOMA</strong> y pulsa en el botón de confirmación.</li>
+                                <li>Vuelve e inicia sesión para empezar a entrenar.</li>
+                            </ol>
+                        </div>
+
+                        <div class="auth-hint">
+                            <i class="bx bx-info-circle" aria-hidden="true"></i>
+                            <span>¿No encuentras el correo? Revisa tu carpeta de <strong>spam</strong> o correo no deseado.</span>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="auth-hint">
+                            <i class="bx bx-check-double" aria-hidden="true"></i>
+                            <span>Tu sesión ya está preparada para comenzar a registrar tus entrenamientos.</span>
+                        </div>
+                    }
+                </div>
+
+                <div class="auth-actions-group">
+                    @if (isConfirmed)
+                    {
+                        <a asp-controller="Dashboard" asp-action="Index" class="auth-btn-primary">
+                            <span>Ir a mi Dashboard</span>
+                            <i class="bx bx-right-arrow-alt" aria-hidden="true"></i>
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-action="Login" class="auth-btn-primary">
+                            <span>Ir a Iniciar Sesión</span>
+                            <i class="bx bx-right-arrow-alt" aria-hidden="true"></i>
+                        </a>
+                    }
+
+                    <a asp-controller="Home" asp-action="Index" class="auth-btn-secondary">
+                        <i class="bx bx-arrow-back" aria-hidden="true"></i>
+                        <span>Volver al inicio</span>
+                    </a>
+                </div>
+
+                <p class="auth-switch">
+                    ¿Deseas registrar otra dirección?
+                    <a asp-action="Register">Registrar cuenta</a>
+                </p>
+            </div>
+
+            <footer class="auth-footer">
+                <span>© @DateTime.Now.Year GNOMA</span>
+                <a asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </footer>
+        </section>
+
+        <aside class="auth-visual auth-visual-register">
+            <div class="auth-visual-image"></div>
+            <div class="auth-visual-overlay"></div>
+
+            <div class="auth-visual-top">
+                <span class="auth-visual-label">YOUR NEXT CHAPTER</span>
+                <span class="auth-visual-index">02 — 03</span>
+            </div>
+
+            <div class="auth-visual-content">
+                <span class="auth-visual-line"></span>
+                <h2>Discipline<br />begins with<br /><span>commitment.</span></h2>
+                <p>You're one step away from joining GNOMA. Check your inbox and begin your journey.</p>
+            </div>
+
+            <div class="auth-visual-bottom">
+                <span>VERIFY YOUR EMAIL TO CONTINUE</span>
+                <i class="bx bx-arrow-up-right" aria-hidden="true"></i>
+            </div>
+        </aside>
+    </main>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/auth/login.js" asp-append-version="true"></script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-﻿using GNOMA.Application.Services.Interfaces;
+using GNOMA.Application.Services.Interfaces;
 using GNOMA.Application.Services.Supabase;
 using GNOMA.Models.Auth;
 using Microsoft.AspNetCore.Authentication;
@@ -99,7 +99,7 @@ namespace GNOMA.Controllers.Base
 
                 await CreateApplicationSessionAsync(result);
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction(nameof(RegisterConfirmation), new { email = model.Email, confirmed = true });
             }
             catch (SupabaseRequestException ex)
             {
@@ -116,13 +116,17 @@ namespace GNOMA.Controllers.Base
             }
             catch (InvalidOperationException)
             {
-                ModelState.AddModelError(
-                    string.Empty,
-                    "Registro recibido. Revisa tu correo para confirmar " +
-                    "la cuenta antes de iniciar sesión.");
-
-                return View(model);
+                return RedirectToAction(nameof(RegisterConfirmation), new { email = model.Email, confirmed = false });
             }
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public IActionResult RegisterConfirmation(string? email, bool confirmed = false)
+        {
+            ViewBag.Email = string.IsNullOrWhiteSpace(email) ? "tu correo electrónico" : email;
+            ViewBag.IsConfirmed = confirmed || (User.Identity?.IsAuthenticated == true);
+            return View();
         }
 
         [Authorize]

@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GNOMA.Controllers.Dashboard
 {
+    [Authorize]
     public class DashboardController : Controller
     {
         // GET: DashboardController

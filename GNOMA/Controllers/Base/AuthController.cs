@@ -14,9 +14,7 @@ namespace GNOMA.Controllers.Base
         private readonly IAuthService _authService;
         private readonly ILogger<AuthController> _logger;
 
-        public AuthController(
-            IAuthService authService,
-            ILogger<AuthController> logger)
+        public AuthController(IAuthService authService, ILogger<AuthController> logger)
         {
             _authService = authService;
             _logger = logger;
@@ -32,9 +30,7 @@ namespace GNOMA.Controllers.Base
         [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(
-            AuthRequest model,
-            CancellationToken cancellationToken)
+        public async Task<IActionResult> Login(AuthRequest model, CancellationToken cancellationToken)
         {
             if (!ModelState.IsValid)
                 return View(model);
@@ -48,7 +44,7 @@ namespace GNOMA.Controllers.Base
 
                 await CreateApplicationSessionAsync(result);
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Dashboard");
             }
             catch (SupabaseRequestException ex)
             {
@@ -89,9 +85,7 @@ namespace GNOMA.Controllers.Base
         [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(
-            AuthRequest model,
-            CancellationToken cancellationToken)
+        public async Task<IActionResult> Register(AuthRequest model, CancellationToken cancellationToken)
         {
             if (!ModelState.IsValid)
                 return View(model);
@@ -134,8 +128,7 @@ namespace GNOMA.Controllers.Base
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Logout(
-            CancellationToken cancellationToken)
+        public async Task<IActionResult> Logout(CancellationToken cancellationToken)
         {
             var accessToken = User.FindFirstValue("supabase_access_token");
 
@@ -166,12 +159,12 @@ namespace GNOMA.Controllers.Base
         private async Task CreateApplicationSessionAsync(AuthResult result)
         {
             var claims = new List<Claim>
-        {
-            new(ClaimTypes.NameIdentifier, result.UserId),
-            new(ClaimTypes.Email, result.Email),
-            new("supabase_access_token", result.AccessToken),
-            new("supabase_refresh_token", result.RefreshToken)
-        };
+            {
+                new(ClaimTypes.NameIdentifier, result.UserId),
+                new(ClaimTypes.Email, result.Email),
+                new("supabase_access_token", result.AccessToken),
+                new("supabase_refresh_token", result.RefreshToken)
+            };
 
             var identity = new ClaimsIdentity(
                 claims,
